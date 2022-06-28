@@ -3,3 +3,5 @@
 ################################################################################
 
 /src/sentiment-api/.vs
+/src/sentiment-api/bin/Debug/net6.0
+/src/sentiment-api/obj
