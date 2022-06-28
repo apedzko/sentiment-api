@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sentiment.API", "Sentiment.API.csproj", "{C485149F-CA7C-46BF-9DA9-3DF957804C43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sentiment.API", ".\Sentiment.API\Sentiment.API.csproj", "{C485149F-CA7C-46BF-9DA9-3DF957804C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentiment.API.Tests", "..\Sentiment.API.Tests\Sentiment.API.Tests.csproj", "{D990B5F4-0060-4BC0-84B2-0A193C21253D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentiment.API.Tests", ".\Sentiment.API.Tests\Sentiment.API.Tests.csproj", "{D990B5F4-0060-4BC0-84B2-0A193C21253D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

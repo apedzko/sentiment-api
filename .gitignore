@@ -7,3 +7,7 @@
 /src/sentiment-api/obj
 /src/Sentiment.API.Tests/bin/Debug/net6.0
 /src/Sentiment.API.Tests/obj
+/src/.vs/Sentiment.Api/FileContentIndex
+/src/Sentiment.API/.vs
+/src/Sentiment.API/bin/Debug/net6.0
+/src/Sentiment.API/obj

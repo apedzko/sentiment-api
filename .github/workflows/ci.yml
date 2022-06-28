@@ -19,7 +19,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+    env: 
+        working-directory: ./src
+
     strategy:
       matrix:
         dotnet-version: ['6.0.x' ]
@@ -32,7 +34,8 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      
+          working-directory: ${{env.working-directory}}
+              
       - name: Cache Nuget packages
         uses: actions/cache@v3
         with:
@@ -41,12 +44,16 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget
-          
+          working-directory: ${{env.working-directory}}
+
       - name: Install dependencies
         run: dotnet restore
+        working-directory: ${{env.working-directory}}
 
       - name: Build
         run: dotnet build --configuration Debug --no-restore
+        working-directory: ${{env.working-directory}}
 
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+        working-directory: ${{env.working-directory}}
