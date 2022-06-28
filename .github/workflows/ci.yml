@@ -30,11 +30,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-          working-directory: ${{env.working-directory}}
+
               
       - name: Cache Nuget packages
         uses: actions/cache@v3
@@ -44,7 +45,7 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget
-          working-directory: ${{env.working-directory}}
+
 
       - name: Install dependencies
         run: dotnet restore
