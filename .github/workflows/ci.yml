@@ -22,10 +22,6 @@ jobs:
     env: 
         working-directory: ./src
 
-    strategy:
-      matrix:
-        dotnet-version: ['6.0.x' ]
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -34,8 +30,7 @@ jobs:
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-
+          dotnet-version: '6.0.x'
               
       - name: Cache Nuget packages
         uses: actions/cache@v3
@@ -46,6 +41,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget
 
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+            queries: security-and-quality
+            languages: csharp
 
       - name: Install dependencies
         run: dotnet restore
@@ -58,3 +58,6 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
         working-directory: ${{env.working-directory}}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
