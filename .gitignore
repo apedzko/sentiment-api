@@ -5,3 +5,5 @@
 /src/sentiment-api/.vs
 /src/sentiment-api/bin/
 /src/sentiment-api/obj
+/src/Sentiment.API.Tests/bin/Debug/net6.0
+/src/Sentiment.API.Tests/obj
