@@ -25,13 +25,17 @@ namespace Sentiment.API.Controllers
             if (file == null || string.IsNullOrEmpty(file.FileName))
                 return BadRequest();
 
-            string fileId = Guid.NewGuid().ToString();
-            
+            string containerName = Guid.NewGuid().ToString();
+
+            _logger.LogDebug($"Uploading file {file.FileName} to container {containerName}");
+
             BlobServiceClient client = GetBlobServiceClient(_configuration.Name, _configuration.SASToken);
 
-            BlobContainerClient container = await CreateContainerAsync(fileId, client);
+            BlobContainerClient container = await CreateContainerAsync(containerName, client);
 
             await UploadBlob(container, file.FileName, file.OpenReadStream());
+
+            _logger.LogDebug($"Successfully uploaded {file.FileName} to container {containerName}");
 
             return StatusCode(201);                       
         }
@@ -62,8 +66,6 @@ namespace Sentiment.API.Controllers
 
         private static BlobServiceClient GetBlobServiceClient(string accountName, string sasToken)
         {
-            //TokenCredential credential = new DefaultAzureCredential();
-
             string blobUri = $"https://{accountName}.blob.core.windows.net";
 
             AzureSasCredential credentials = new AzureSasCredential(sasToken);

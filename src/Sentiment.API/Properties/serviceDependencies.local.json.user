@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2022-06-29T12:14:55.1080467Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2022-06-29T13:12:13.4459929Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "sentiment-ci-weu"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "cbcb409c-b68e-4614-a157-73ccba768f48"
+    }
+  }
+}

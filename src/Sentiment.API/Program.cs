@@ -10,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplicationInsightsTelemetry();
+
 StorageAccountOptions options = new StorageAccountOptions();
 builder.Configuration.GetSection("StorageAccount").Bind(options);
 builder.Services.AddSingleton<StorageAccountOptions>(options);

@@ -35,7 +35,7 @@ namespace Sentiment.API.Infrastructure.Middleware
 
         private async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
-            _logger.LogError(ex, $"An unhandled exception has occurred, {ex.Message}");
+            _logger.LogError(ex, "An unhandled exception has occurred");
 
             var problemDetails = new ProblemDetails
             {
@@ -43,7 +43,7 @@ namespace Sentiment.API.Infrastructure.Middleware
                 Title = "Internal Server Error",
                 Status = (int)HttpStatusCode.InternalServerError,
                 Instance = context.Request.Path,
-                Detail = "Internal server error occured!"
+                Detail = "Internal server error occured."
             };
 
             var routeData = context.GetRouteData() ?? EmptyRouteData;
@@ -56,8 +56,6 @@ namespace Sentiment.API.Infrastructure.Middleware
             };
 
             await _executor.ExecuteAsync(actionContext, result);
-
-            await context.Response.CompleteAsync();
         }
     }
 }

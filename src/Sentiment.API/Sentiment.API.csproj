@@ -8,11 +8,12 @@
     <UserSecretsId>4369e0ad-aee1-4431-b974-3be6593ae24f</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <ApplicationInsightsResourceId>/subscriptions/cbcb409c-b68e-4614-a157-73ccba768f48/resourceGroups/sentiment-ci-weu/providers/microsoft.insights/components/sentiment-ci-weu</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.6.0" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.16.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
