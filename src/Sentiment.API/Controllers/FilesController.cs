@@ -26,21 +26,14 @@ namespace Sentiment.API.Controllers
                 return BadRequest();
 
             string fileId = Guid.NewGuid().ToString();
+            
+            BlobServiceClient client = GetBlobServiceClient(_configuration.Name, _configuration.SASToken);
 
-            try
-            {
-                BlobServiceClient client = GetBlobServiceClient(_configuration.Name, _configuration.SASToken);
+            BlobContainerClient container = await CreateContainerAsync(fileId, client);
 
-                BlobContainerClient container = await CreateContainerAsync(fileId, client);
+            await UploadBlob(container, file.FileName, file.OpenReadStream());
 
-                await UploadBlob(container, file.FileName, file.OpenReadStream());
-
-                return StatusCode(201);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500);
-            }            
+            return StatusCode(201);                       
         }
 
         public static async Task UploadBlob(BlobContainerClient containerClient, string fileName, Stream fileStream)

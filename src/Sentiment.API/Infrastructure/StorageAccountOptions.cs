@@ -2,7 +2,7 @@
 {
     public sealed class StorageAccountOptions
     {
-        public string Name { get; set; }
-        public string SASToken { get; set; }
+        public string? Name { get; set; }
+        public string? SASToken { get; set; }
     }
 }
