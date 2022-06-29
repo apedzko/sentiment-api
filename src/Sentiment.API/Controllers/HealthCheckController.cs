@@ -13,7 +13,7 @@ namespace Sentiment.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public string Get()
         {
             return "success";
