@@ -2,17 +2,16 @@
 {
     public static class StorageConfigurationExtensions
     {
-        public static WebApplicationBuilder AddStorageConfiguration(this WebApplicationBuilder app) 
+        public static void AddStorageConfiguration(this IServiceCollection services, IConfiguration configuration) 
         {
-            ArgumentNullException.ThrowIfNull(app);
+            ArgumentNullException.ThrowIfNull(services);
+            ArgumentNullException.ThrowIfNull(configuration);
 
             StorageAccountConfiguration options = new StorageAccountConfiguration();
-            app.Configuration.GetSection("StorageAccount").Bind(options, c => c.BindNonPublicProperties = true);
-            app.Services.AddSingleton(options);
+            configuration.GetSection("StorageAccount").Bind(options, c => c.BindNonPublicProperties = true);
+            services.AddSingleton(options);
 
-            app.Services.AddScoped<IBlobStorageClient, BlobStorageClient>();
-
-            return app;
+            services.AddScoped<IBlobStorageClient, BlobStorageClient>();
         }
     }
 }

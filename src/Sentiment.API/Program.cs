@@ -17,9 +17,7 @@ builder.Services.AddSwaggerGen(options => {
 
 builder.Services.AddApplicationInsightsTelemetry();
 
-builder.AddStorageConfiguration();
-
-builder.Services.AddScoped<IBlobStorageClient, BlobStorageClient>();
+builder.Services.AddStorageConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
