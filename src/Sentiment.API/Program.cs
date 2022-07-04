@@ -1,4 +1,4 @@
-using Sentiment.API.Infrastructure;
+using Sentiment.API.Infrastructure.Azure;
 using Sentiment.API.Infrastructure.Middleware;
 using System.Reflection;
 
@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
@@ -16,9 +17,9 @@ builder.Services.AddSwaggerGen(options => {
 
 builder.Services.AddApplicationInsightsTelemetry();
 
-StorageAccountOptions options = new StorageAccountOptions();
-builder.Configuration.GetSection("StorageAccount").Bind(options, c => c.BindNonPublicProperties = true);
-builder.Services.AddSingleton(options);
+builder.AddStorageConfiguration();
+
+builder.Services.AddScoped<IBlobStorageClient, BlobStorageClient>();
 
 var app = builder.Build();
 
