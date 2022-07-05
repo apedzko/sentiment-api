@@ -10,6 +10,7 @@ namespace Sentiment.API.Controllers
 
         public HealthCheckController(ILogger<HealthCheckController> logger)
         {
+            ArgumentNullException.ThrowIfNull(logger);
             _logger = logger;
         }
 
