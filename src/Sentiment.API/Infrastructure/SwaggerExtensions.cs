@@ -1,7 +1,9 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace Sentiment.API.Infrastructure
 {
+    [ExcludeFromCodeCoverage]
     public static class SwaggerExtensions
     {
         public static void AddSwagger(this IServiceCollection services)

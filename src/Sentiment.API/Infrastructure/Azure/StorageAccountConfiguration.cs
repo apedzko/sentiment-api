@@ -1,6 +1,9 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sentiment.API.Infrastructure.Azure
 {
+    [ExcludeFromCodeCoverage]
     public sealed class StorageAccountConfiguration
     {
         private string _name = null!;
@@ -9,7 +12,7 @@ namespace Sentiment.API.Infrastructure.Azure
         public string Name
         {
             get => _name;
-            set
+            private set
             {
                 ArgumentNullException.ThrowIfNull(value);
                 _name = value;
@@ -18,7 +21,7 @@ namespace Sentiment.API.Infrastructure.Azure
         public string SASToken
         {
             get => _sasToken;
-            set
+            private set
             {
                 ArgumentNullException.ThrowIfNull(value);
                 _sasToken = value;

@@ -2,9 +2,11 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Specialized;
 using Sentiment.API.Infrastructure.Helpers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sentiment.API.Infrastructure.Azure
 {
+    [ExcludeFromCodeCoverage]
     public sealed class BlobStorageClient : IBlobStorageClient
     {
         private readonly StorageAccountConfiguration _configuration;
@@ -17,8 +19,8 @@ namespace Sentiment.API.Infrastructure.Azure
 
         public async Task UploadFileAsync(string containerName, string fileName, Stream fileContent)
         {
-            ArgumentNullExceptionExtensions.ThrowIfNullOrEmpty(containerName, nameof(containerName));
-            ArgumentNullExceptionExtensions.ThrowIfNullOrEmpty(fileName, nameof(fileName));
+            Guard.ThrowIfNullOrEmpty(containerName, nameof(containerName));
+            Guard.ThrowIfNullOrEmpty(fileName, nameof(fileName));
             ArgumentNullException.ThrowIfNull(fileContent);
 
             BlobServiceClient client = GetBlobServiceClient(_configuration.Name, _configuration.SASToken);

@@ -1,5 +1,8 @@
-﻿namespace Sentiment.API.Infrastructure.Azure
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Sentiment.API.Infrastructure.Azure
 {
+    [ExcludeFromCodeCoverage]
     public static class StorageConfigurationExtensions
     {
         public static void AddStorageConfiguration(this IServiceCollection services, IConfiguration configuration) 

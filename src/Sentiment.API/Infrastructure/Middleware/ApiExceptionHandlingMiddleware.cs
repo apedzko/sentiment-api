@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Net;
-using System.Text.Json;
 
 namespace Sentiment.API.Infrastructure.Middleware
 {
@@ -16,6 +15,10 @@ namespace Sentiment.API.Infrastructure.Middleware
 
         public ApiExceptionHandlingMiddleware(RequestDelegate next, ILogger<ApiExceptionHandlingMiddleware> logger, IActionResultExecutor<ObjectResult> executor)
         {
+            ArgumentNullException.ThrowIfNull(next, nameof(next));
+            ArgumentNullException.ThrowIfNull(logger, nameof(logger));
+            ArgumentNullException.ThrowIfNull(executor, nameof(executor));
+
             _next = next;
             _logger = logger;
             _executor = executor;
@@ -35,7 +38,7 @@ namespace Sentiment.API.Infrastructure.Middleware
 
         private async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
-            _logger.LogError(ex, "An unhandled exception has occurred");
+            _logger.LogError(ex, "An unhandled exception has occurred.");
 
             var problemDetails = new ProblemDetails
             {
