@@ -13,3 +13,5 @@
 /src/Sentiment.API/obj
 /src/.vs
 /.vs
+/src/Sentiment.Core/bin/Debug/net6.0
+/src/Sentiment.Core/obj
