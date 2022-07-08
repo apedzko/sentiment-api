@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/sentiment-api/.vs
+/src/sentiment-api/bin/
+/src/sentiment-api/obj
+/src/Sentiment.API.Tests/bin/Debug/net6.0
+/src/Sentiment.API.Tests/obj
+/src/.vs/Sentiment.Api/FileContentIndex
+/src/Sentiment.API/.vs
+/src/Sentiment.API/bin/Debug/net6.0
+/src/Sentiment.API/obj
+/src/.vs
+/.vs
+/src/Sentiment.Core/bin/Debug/net6.0
+/src/Sentiment.Core/obj
